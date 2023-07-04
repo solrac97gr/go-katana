@@ -2,19 +2,41 @@
   "name": "go-katana",
   "displayName": "go-katana",
   "description": "Go Snippets for Hexagonal Architecture",
-  "version": "0.0.1",
+  "icon": "media/icon.png",
+  "version": "1.0.0",
   "engines": {
     "vscode": "^1.79.0"
-   },
+  },
+  "author": {
+    "name": "carlos.lat",
+    "url": "https://carlos.lat"
+  },
   "categories": [
     "Snippets"
   ],
+  "keywords": [
+    "go",
+    "golang",
+    "snippets",
+    "hexagonal",
+    "architecture",
+    "code generator"
+  ],
+  "publisher": "Carlos.lat",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/solrac97gr/go-katana"
+  },
+  "bugs": {
+    "url": "https://github.com/solrac97gr/go-katana/issues",
+    "email": "cgarciarosales97@gmail.com"
+  },
   "contributes": {
     "snippets": [
-        {
-          "language": "go",
-          "path": "./snippets/snippets.json"
-        }
+      {
+        "language": "go",
+        "path": "./snippets/snippets.json"
+      }
     ]
-   }
+  }
 }
