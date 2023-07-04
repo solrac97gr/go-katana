@@ -1,0 +1,89 @@
+{
+  "Generate Value Object": {
+    "scope": "go",
+    "prefix": "vo",
+    "body": [
+      "package ${TM_DIRECTORY/.*\\/([^\\/]+)$/$1/}",
+      "",
+      "type ${TM_FILENAME_BASE/(_|^)(\\w)/${2:/capitalize}/g} struct {",
+      "\tvalue ${1:string}",
+      "}",
+      "",
+      "func New${TM_FILENAME_BASE/(_|^)(\\w)/${2:/capitalize}/g}(value ${1:string}) ${TM_FILENAME_BASE/(_|^)(\\w)/${2:/capitalize}/g} {",
+      "\treturn ${TM_FILENAME_BASE/(_|^)(\\w)/${2:/capitalize}/g}{",
+      "\t\tvalue: value,",
+      "\t}",
+      "}",
+      "",
+      "func (${TM_FILENAME_BASE/(^.)(.*)/${1:/downcase}/} ${TM_FILENAME_BASE/(_|^)(\\w)/${2:/capitalize}/g}) Equals(other ${TM_FILENAME_BASE/(_|^)(\\w)/${2:/capitalize}/g}) bool {",
+      "\treturn ${TM_FILENAME_BASE/(^.)(.*)/${1:/downcase}/}.value == other.value",
+      "}",
+      "",
+      "func (${TM_FILENAME_BASE/(^.)(.*)/${1:/downcase}/} ${TM_FILENAME_BASE/(_|^)(\\w)/${2:/capitalize}/g}) Validate() error {",
+      "\t//TODO: Implement",
+      "\treturn nil",
+      "}"
+    ],
+    "description": "Generate a boiler plate entity"
+  },
+  "Generate Port": {
+    "scope": "go",
+    "prefix": "port",
+    "body": [
+      "package ${TM_DIRECTORY/.*\\/([^\\/]+)$/$1/}",
+      "",
+      "type ${TM_FILENAME_BASE/(_|^)(\\w)/${2:/capitalize}/g} interface{}",
+      ""
+    ],
+    "description": "Generate a boiler plate port"
+  },
+  "Generate Service": {
+    "scope": "go",
+    "prefix": "service",
+    "body": [
+      "package ${TM_DIRECTORY/.*\\/([^\\/]+)$/$1/}",
+      "",
+      "import (",
+      " ports ${TM_DIRECTORY}",
+      ")",
+      "",
+      "type ${TM_FILENAME_BASE/(_|^)(\\w)/${2:/capitalize}/g} struct {",
+      "\t${1:field} ${2:string}",
+      "}",
+      "",
+      "// Validate the interface it's completed in the struct",
+      "var _ ports.${TM_FILENAME_BASE/(_|^)(\\w)/${2:/capitalize}/g} = (*${TM_FILENAME_BASE/(_|^)(\\w)/${2:/capitalize}/g})(nil)",
+      "",
+      "func New${TM_FILENAME_BASE/(_|^)(\\w)/${2:/capitalize}/g}(${1:field} ${2:string}) (*${TM_FILENAME_BASE/(_|^)(\\w)/${2:/capitalize}/g}, error) {",
+      "\treturn &${TM_FILENAME_BASE/(_|^)(\\w)/${2:/capitalize}/g}{",
+      "\t\t//Add properties",
+      "\t\t${1:field}: ${1:field},",
+      "\t},nil",
+      "}"
+    ],
+    "description": "Generate a boiler plate service"
+  },
+  "Generate Entity": {
+    "scope": "go",
+    "prefix": "entity",
+    "body": [
+      "package ${TM_DIRECTORY/.*\\/([^\\/]+)$/$1/}",
+      "",
+      "type ${TM_FILENAME_BASE/(_|^)(\\w)/${2:/capitalize}/g} struct {",
+      "\t${1:field} ${2:string}",
+      "}",
+      "",
+      "func New${TM_FILENAME_BASE/(_|^)(\\w)/${2:/capitalize}/g}(${1:field} ${2:string}) *${TM_FILENAME_BASE/(_|^)(\\w)/${2:/capitalize}/g} {",
+      "\treturn &${TM_FILENAME_BASE/(_|^)(\\w)/${2:/capitalize}/g}{",
+      "\t\t//Add properties",
+      "\t\t${1:field}: ${1:field},",
+      "\t}",
+      "}",
+      "",
+      "func (${TM_FILENAME_BASE/(^.)(.*)/${1:/downcase}/} *${TM_FILENAME_BASE/(_|^)(\\w)/${2:/capitalize}/g}) Validate() error {",
+      "\treturn nil",
+      "}"
+    ],
+    "description": "Generate a boiler plate entity"
+  }
+}
