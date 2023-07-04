@@ -1,65 +1,101 @@
-# go-katana README
+# Go Katana
 
-This is the README for your extension "go-katana". After writing up a brief description, we recommend including the following sections.
+This extension is a compilation of all the tools I create for help me in my good projects (Snippets, Code Generator, etc).
 
-## Features
+## Snippets
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+### Create a Entity [Snippet:`entity`]
 
-For example if there is an image subfolder under your extension project workspace:
+Generate a Entity using the file name.
 
-\!\[feature X\]\(images/feature-x.png\)
+```go
+package models
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+type Exmaple struct {
+	field string
+}
 
-## Requirements
+func NewExmaple(field string) *Exmaple {
+	return &Exmaple{
+		//Add properties
+		field: field,
+	}
+}
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+func (e *Exmaple) Validate() error {
+	//TODO: Implement
+	return nil
+}
+```
 
-## Extension Settings
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+### Create a Value Object model [Snippet:`vo`]
 
-For example:
+Using the snippet `vo` will generate a value object model for Go.
 
-This extension contributes the following settings:
+The package will be the name of the folder, the VO name will be the name of the file (user_email.go)
 
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+```go
+package models
 
-## Known Issues
+type UserEmail struct {
+	value string
+}
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+func NewUserEmail(value string) UserEmail {
+	return UserEmail{
+		value: value,
+	}
+}
 
-## Release Notes
+func (u UserEmail) Equals(other UserEmail) bool {
+	return u.value == other.value
+}
 
-Users appreciate release notes as you update your extension.
+func (u UserEmail) Validate() error {
+	//TODO: Implement
+	return nil
+}
+```
 
-### 1.0.0
+### Create a Port [Snippet:`port`]
 
-Initial release of ...
+Generate a Interface of the current file name
 
-### 1.0.1
+The name of the file its the name of the interface (user_application.go) and the name of the package it's the folder.
 
-Fixed issue #.
+```go
+package models
 
-### 1.1.0
+type UserApplication interface{}
+```
 
-Added features X, Y, and Z.
+### Create a Implementation [Snippet:`impl`]
 
----
+Generate a Implementation of a Interface
 
-## Working with Markdown
+> We need to write the path of the import.
 
-You can author your README using Visual Studio Code.  Here are some useful editor keyboard shortcuts:
+```go
+package query_builder
 
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux)
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux)
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets
+import (
+ ports "auth/internal/query_builder"
+)
 
-## For more information
+type QueryBuilder struct {
+	field string
+}
 
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
+// Validate the interface it's completed in the struct
+var _ ports.QueryBuilder = (*QueryBuilder)(nil)
 
-**Enjoy!**
+func NewQueryBuilder(field string) (*QueryBuilder, error) {
+	return &QueryBuilder{
+		//Add properties
+		field: field,
+	},nil
+}
+```
+
+

@@ -37,9 +37,9 @@
     ],
     "description": "Generate a boiler plate port"
   },
-  "Generate Service": {
+  "Generate Implementation": {
     "scope": "go",
-    "prefix": "service",
+    "prefix": "impl",
     "body": [
       "package ${TM_DIRECTORY/.*\\/([^\\/]+)$/$1/}",
       "",
