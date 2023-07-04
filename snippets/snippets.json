@@ -81,6 +81,7 @@
       "}",
       "",
       "func (${TM_FILENAME_BASE/(^.)(.*)/${1:/downcase}/} *${TM_FILENAME_BASE/(_|^)(\\w)/${2:/capitalize}/g}) Validate() error {",
+      "\t//TODO: Implement",
       "\treturn nil",
       "}"
     ],
