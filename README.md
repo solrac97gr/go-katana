@@ -15,6 +15,30 @@ type Exmaple struct {
 	field string
 }
 
+func NewExmaple(field string) Exmaple {
+	return Exmaple{
+		//Add properties
+		field: field,
+	}
+}
+
+func (e Exmaple) Validate() error {
+	//TODO: Implement
+	return nil
+}
+```
+
+### Create a Pointer Entity [Snippet:`pentity`]
+
+Generate a Entity using the file name.
+
+```go
+package models
+
+type Exmaple struct {
+	field string
+}
+
 func NewExmaple(field string) *Exmaple {
 	return &Exmaple{
 		//Add properties
@@ -69,8 +93,35 @@ package models
 
 type UserApplication interface{}
 ```
-
 ### Create a Implementation [Snippet:`impl`]
+
+Generate a Implementation of a Interface
+
+> We need to write the path of the import.
+
+```go
+package query_builder
+
+import (
+ ports "auth/internal/query_builder"
+)
+
+type QueryBuilder struct {
+	field string
+}
+
+// Validate the interface it's completed in the struct
+var _ ports.QueryBuilder = (*QueryBuilder)(nil)
+
+func NewQueryBuilder(field string) (QueryBuilder, error) {
+	return QueryBuilder{
+		//Add properties
+		field: field,
+	},nil
+}
+```
+
+### Create a Pointer Implementation [Snippet:`pimpl`]
 
 Generate a Implementation of a Interface
 
@@ -104,8 +155,44 @@ Generate a reciver function of the current file we are working
 - The reciver entity will be take it from the file name like in entity snippet
 
 ```go
+func (e Entity) FunctionName() error {
+	//TODO: Implement
+	return nil
+}
+```
+
+### Generate Pointer Reciver Function [Snippet:`prfunc`]
+
+Generate a reciver function of the current file we are working
+- The reciver entity will be take it from the file name like in entity snippet
+
+```go
 func (e *Entity) FunctionName() error {
 	//TODO: Implement
 	return nil
+}
+```
+
+### Generate only a constructor [Snippet:`constructor`]
+
+Generate a constructor for the entity
+
+```go
+func NewEntity(value string) Entity {
+	return Entity{
+		value: value
+	}
+}
+```
+
+### Generate only a pointer constructor [Snippet:`pconstructor`]
+
+Generate a constructor for the entity
+
+```go
+func NewEntity(value string) *Entity {
+	return &Entity{
+		value: value
+	}
 }
 ```
