@@ -7,3 +7,15 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 ## [Unreleased]
 
 - Initial release
+
+## [1.1.0] - 2023-07-15
+
+### Added
+
+- New command Add for create reciver functions
+
+### Fixed
+
+### Changed
+
+### Removed
