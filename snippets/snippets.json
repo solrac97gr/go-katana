@@ -86,5 +86,16 @@
       "}"
     ],
     "description": "Generate a boiler plate entity"
+  },
+  "Generate Reciver Function": {
+    "scope": "go",
+    "prefix": "rfunc",
+    "body": [
+      "func (${TM_FILENAME_BASE/(^.)(.*)/${1:/downcase}/} *${TM_FILENAME_BASE/(_|^)(\\w)/${2:/capitalize}/g}) ${1:FuncionName}() ${2:error} {",
+      "\t//TODO: Implement",
+      "\treturn ${3:nil}",
+      "}"
+    ],
+    "description": "Generate a reciver function"
   }
 }

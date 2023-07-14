@@ -98,4 +98,14 @@ func NewQueryBuilder(field string) (*QueryBuilder, error) {
 }
 ```
 
+### Generate Reciver Function [Snippet:`rfunc`]
 
+Generate a reciver function of the current file we are working
+- The reciver entity will be take it from the file name like in entity snippet
+
+```go
+func (e *Entity) FunctionName() error {
+	//TODO: Implement
+	return nil
+}
+```
